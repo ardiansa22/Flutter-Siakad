@@ -5,7 +5,7 @@ import 'package:flutter_template_tugas_besar/pages/auth/auth_page.dart';
 import 'package:flutter_template_tugas_besar/pages/mahasiswa/mahasiswa_page.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-import 'pages/auth/splash_page.dart';
+
 
 void main() {
   runApp(const MyApp());
@@ -27,7 +27,7 @@ class MyApp extends StatelessWidget {
         builder: (context,snapshot){
           if(snapshot.hasData && snapshot.data!){
             return BlocProvider(
-              create: (context) = KhsBloc(),
+              create: (context) => KhsBloc(),
               child: MahasiswaPage(),
             );
           }else {

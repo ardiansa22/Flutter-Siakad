@@ -1,14 +1,19 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_template_tugas_besar/bloc/login/login_bloc.dart';
+import 'package:flutter_template_tugas_besar/data/datasources/auth_local_datasource.dart';
+import 'package:flutter_template_tugas_besar/pages/dosen/dosen_page.dart';
+import 'package:flutter_template_tugas_besar/pages/mahasiswa/mahasiswa_page.dart';
 
 import '../../../common/components/buttons.dart';
 import '../../../common/components/custom_text_field.dart';
 import '../../../common/constants/colors.dart';
 
 class LoginBottomSheet extends StatefulWidget {
-  final VoidCallback onPressed;
+  // final VoidCallback onPressed;
   const LoginBottomSheet({
     super.key,
-    required this.onPressed,
+    //   required this.onPressed,
   });
 
   @override
@@ -83,9 +88,35 @@ class _LoginBottomSheetState extends State<LoginBottomSheet> {
                 obscureText: true,
               ),
               const SizedBox(height: 24.0),
-              Button.filled(
-                onPressed: widget.onPressed,
-                label: 'Masuk',
+              BlocListener<LoginBloc, LoginState>(
+                listener: (context, state) {
+                  state.maybeWhen(
+                    orElse: (){},
+                    loaded: (data){
+                      AuthLocalDatasource().saveAuthData(data);
+                      if(data.user.roles == 'Mahasiswa' || data.user.roles == 'admin'){
+                        Navigator.pushReplacement(context, MaterialPageRoute(builder: (context){
+                          return MahasiswaPage();
+                        }));
+                      }else{
+                        Navigator.pushReplacement(context,
+                        MaterialPageRoute(builder: (context){
+                          return DosenPage();
+                        }));
+                      }
+                    });
+                },
+                error: (message){
+                  
+                }
+                child: BlocBuilder<SubjectBloc, SubjectState>(
+                  builder: (context, state) {
+                    return Button.filled(
+                      // onPressed: widget.onPressed,
+                      label: 'Masuk',
+                    );
+                  },
+                ),
               ),
               const SizedBox(height: 12.0),
             ],
