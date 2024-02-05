@@ -11,7 +11,11 @@ import '../../../common/components/custom_text_field.dart';
 import '../../../common/constants/colors.dart';
 
 class LoginBottomSheet extends StatefulWidget {
-  const LoginBottomSheet({Key? key}) : super(key: key);
+  // final VoidCallback onPressed;
+  const LoginBottomSheet({
+    super.key,
+    //   required this.onPressed,
+  });
 
   @override
   State<LoginBottomSheet> createState() => _LoginBottomSheetState();
@@ -88,53 +92,48 @@ class _LoginBottomSheetState extends State<LoginBottomSheet> {
               BlocListener<LoginBloc, LoginState>(
                 listener: (context, state) {
                   state.maybeWhen(
-                    orElse: () {},
-                    loaded: (data) {
+                    orElse: (){},
+                    loaded: (data){
                       AuthLocalDatasource().saveAuthData(data);
-                      if (data.user.roles == 'Mahasiswa' ||
-                          data.user.roles == 'admin') {
-                        Navigator.pushReplacement(
-                          context,
-                          MaterialPageRoute(builder: (context) {
-                            return MahasiswaPage();
-                          }),
-                        );
-                      } else {
-                        Navigator.pushReplacement(
-                          context,
-                          MaterialPageRoute(builder: (context) {
-                            return DosenPage();
-                          }));
+                      if(data.user.roles == 'Mahasiswa' || data.user.roles == 'admin'){
+                        Navigator.pushReplacement(context, MaterialPageRoute(builder: (context){
+                          return MahasiswaPage();
+                        }));
+                      }else{
+                        Navigator.pushReplacement(context,
+                        MaterialPageRoute(builder: (context){
+                          return DosenPage();
+                        }));
                       }
-                    },
-                    error: (message) {
-                      showDialog(
-                        context: context, 
-                        builder: (context) {
-                          return AlertDialog(
-                            title: const Text('Error'),
-                            content: Text(message),
-                          );
-                        });
-                    },
+                    
+                },
+                error: (message){
+                  showDialog(
+                    context: context, builder: (context){
+                      return AlertDialog(
+                        title: Text('Error'),
+                        content: Text(message),
+                      );
+                    });
+                  },
                   );
                 },
                 child: BlocBuilder<LoginBloc, LoginState>(
                   builder: (context, state) {
-                    return state.maybeWhen(orElse: () {
+                    return state.maybeWhen(orElse: (){
                       return Button.filled(
-                        onPressed: () {
+                        onPressed: (){
                           final requestModel = AuthRequestModel(
                             email: usernameController.text, 
                             password: passwordController.text,
                             );
                             context
-                            .read<LoginBloc>()
-                            .add(LoginEvent.login(requestModel));
-                    },
-                    lbel: 'Masuk',
+                                .read<LoginBloc>()
+                                .add(LoginEvent.login(requestModel));
+                        },
+                        label: 'Masuk'
                       );
-                  }, loading: () {
+                  }, loading: (){
                     return const Center(
                       child: CircularProgressIndicator(),
                     );
@@ -142,12 +141,11 @@ class _LoginBottomSheetState extends State<LoginBottomSheet> {
                   },
                 ),
               ),
-            const SizedBox(height: 12.0),
+              const SizedBox(height: 12.0),
             ],
           ),
         ],
-        ),
-      );
+      ),
+    );
   }
 }
-
