@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_template_tugas_besar/bloc/login/login_bloc.dart';
 import 'package:flutter_template_tugas_besar/data/datasources/auth_local_datasource.dart';
+import 'package:flutter_template_tugas_besar/data/models/request/auth_request_model.dart';
 import 'package:flutter_template_tugas_besar/pages/dosen/dosen_page.dart';
 import 'package:flutter_template_tugas_besar/pages/mahasiswa/mahasiswa_page.dart';
 
@@ -10,11 +11,7 @@ import '../../../common/components/custom_text_field.dart';
 import '../../../common/constants/colors.dart';
 
 class LoginBottomSheet extends StatefulWidget {
-  // final VoidCallback onPressed;
-  const LoginBottomSheet({
-    super.key,
-    //   required this.onPressed,
-  });
+  const LoginBottomSheet({Key? key}) : super(key: key);
 
   @override
   State<LoginBottomSheet> createState() => _LoginBottomSheetState();
@@ -91,38 +88,66 @@ class _LoginBottomSheetState extends State<LoginBottomSheet> {
               BlocListener<LoginBloc, LoginState>(
                 listener: (context, state) {
                   state.maybeWhen(
-                    orElse: (){},
-                    loaded: (data){
+                    orElse: () {},
+                    loaded: (data) {
                       AuthLocalDatasource().saveAuthData(data);
-                      if(data.user.roles == 'Mahasiswa' || data.user.roles == 'admin'){
-                        Navigator.pushReplacement(context, MaterialPageRoute(builder: (context){
-                          return MahasiswaPage();
-                        }));
-                      }else{
-                        Navigator.pushReplacement(context,
-                        MaterialPageRoute(builder: (context){
-                          return DosenPage();
-                        }));
+                      if (data.user.roles == 'Mahasiswa' ||
+                          data.user.roles == 'admin') {
+                        Navigator.pushReplacement(
+                          context,
+                          MaterialPageRoute(builder: (context) {
+                            return MahasiswaPage();
+                          }),
+                        );
+                      } else {
+                        Navigator.pushReplacement(
+                          context,
+                          MaterialPageRoute(builder: (context) {
+                            return DosenPage();
+                          }));
                       }
-                    });
+                    },
+                    error: (message) {
+                      showDialog(
+                        context: context, 
+                        builder: (context) {
+                          return AlertDialog(
+                            title: const Text('Error'),
+                            content: Text(message),
+                          );
+                        });
+                    },
+                  );
                 },
-                error: (message){
-                  
-                }
-                child: BlocBuilder<SubjectBloc, SubjectState>(
+                child: BlocBuilder<LoginBloc, LoginState>(
                   builder: (context, state) {
-                    return Button.filled(
-                      // onPressed: widget.onPressed,
-                      label: 'Masuk',
+                    return state.maybeWhen(orElse: () {
+                      return Button.filled(
+                        onPressed: () {
+                          final requestModel = AuthRequestModel(
+                            email: usernameController.text, 
+                            password: passwordController.text,
+                            );
+                            context
+                            .read<LoginBloc>()
+                            .add(LoginEvent.login(requestModel));
+                    },
+                    lbel: 'Masuk',
+                      );
+                  }, loading: () {
+                    return const Center(
+                      child: CircularProgressIndicator(),
                     );
+                  });
                   },
                 ),
               ),
-              const SizedBox(height: 12.0),
+            const SizedBox(height: 12.0),
             ],
           ),
         ],
-      ),
-    );
+        ),
+      );
   }
 }
+
