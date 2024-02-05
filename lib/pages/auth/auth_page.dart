@@ -29,7 +29,7 @@ class _AuthPageState extends State<AuthPage> {
             ),
             const SizedBox(height: 8.0),
             const Text(
-              "SIAKAD CWB",
+              "SIAKAD LPKIA Kelompok 1",
               style: TextStyle(
                 fontSize: 34,
                 fontWeight: FontWeight.w800,
@@ -38,7 +38,7 @@ class _AuthPageState extends State<AuthPage> {
             ),
             const SizedBox(height: 8.0),
             const Text(
-              "Melayani Edukasi, Memudahkan Administrasi!",
+              "Ferian, Rizky N, Fakhrijal, Aldi, Risky F",
               style: TextStyle(
                 fontSize: 15,
                 fontWeight: FontWeight.w600,
