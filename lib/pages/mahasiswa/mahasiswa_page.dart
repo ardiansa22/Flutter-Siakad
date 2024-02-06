@@ -16,13 +16,13 @@ class MahasiswaPage extends StatefulWidget {
 class _MahasiswaPageState extends State<MahasiswaPage> {
   int _selectedIndex = 0;
 
-  final List<Widget> _pages = [
+  final List<Widget> _pages = [ //halaman apa saja yang akan ditampilkan
     const DashboardPage(),
     const SchedulesPage(),
     const ProfilePage(role: 'Mahasiswa')
   ];
 
-  void _onItemTapped(int index) {
+  void _onItemTapped(int index) { //method untuk mengatur halaman yang dipilih
     setState(() {
       _selectedIndex = index;
     });
@@ -39,9 +39,9 @@ class _MahasiswaPageState extends State<MahasiswaPage> {
           showSelectedLabels: false,
           showUnselectedLabels: false,
           selectedItemColor: ColorName.primary,
-          onTap: _onItemTapped,
+          onTap: _onItemTapped,   //mengatur halaman yang dipilih saat item ditekan
           items: const [
-            BottomNavigationBarItem(
+            BottomNavigationBarItem( //item navigasi bottom halaman utama
               icon: ImageIcon(IconName.home),
               label: '',
             ),

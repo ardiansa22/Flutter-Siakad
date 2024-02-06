@@ -15,14 +15,14 @@ class NilaiMkPage extends StatefulWidget {
 class _NilaiMkPageState extends State<NilaiMkPage> {
   @override
   Widget build(BuildContext context) {
-    return CustomScaffold(
+    return CustomScaffold( //menggunakan custom scafold sebagai kerangka halaman
       body: ListView(
         padding: const EdgeInsets.all(24.0),
         shrinkWrap: true,
         physics: const NeverScrollableScrollPhysics(),
         children: [
           const Text(
-            "Nilai MK",
+            "Nilai Mata Kuliah",
             style: TextStyle(
               fontSize: 24,
               fontWeight: FontWeight.w700,
@@ -33,23 +33,23 @@ class _NilaiMkPageState extends State<NilaiMkPage> {
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               const Text(
-                "14 of 64 results",
+                "3 of 10 results",
                 style: TextStyle(
                   color: ColorName.grey,
                 ),
               ),
-              IconButton(
-                onPressed: () {},
+              IconButton( //menampilkan tombol filter dengan ikon filter_list
+                onPressed: () {}, //aksi saat tombol ditekan
                 icon: const Icon(Icons.filter_list),
               ),
             ],
           ),
           const SizedBox(height: 15.0),
-          CourseGradeTile(
+          CourseGradeTile( //menampilkan nilai mata kuliah
             data: CourseGradeModel(
               information: '',
               attendance: 'Hadir',
-              course: 'Kecerdasan Buatan',
+              course: 'Pemrograman Piranti Bergerak',
               grade: 100,
               description: 'Tugas Praktikum',
             ),
@@ -60,8 +60,8 @@ class _NilaiMkPageState extends State<NilaiMkPage> {
               information: '',
               attendance: 'Hadir',
               course: 'Basis Data',
-              grade: 80,
-              description: 'Tugas Praktikum',
+              grade: 90,
+              description: 'Tugas Teori',
             ),
           ),
           const SizedBox(height: 50.0),
@@ -69,8 +69,8 @@ class _NilaiMkPageState extends State<NilaiMkPage> {
             data: CourseGradeModel(
               information: '',
               attendance: 'Hadir',
-              course: 'Pemrograman Dasar',
-              grade: 98,
+              course: 'Pemrograman Web 3',
+              grade: 90,
               description: 'Tugas Praktikum',
             ),
           ),

@@ -19,7 +19,7 @@ class DashboardPage extends StatefulWidget {
 class _DashboardPageState extends State<DashboardPage> {
   @override
   Widget build(BuildContext context) {
-    final searchController = TextEditingController();
+    final searchController = TextEditingController(); // controller untuk input perncarian
 
     return ListView(
       padding: const EdgeInsets.all(20.0),
@@ -38,8 +38,8 @@ class _DashboardPageState extends State<DashboardPage> {
             Row(
               children: [
                 IconButton(
-                  onPressed: () {
-                    Navigator.push(context,
+                  onPressed: () { //fungsi akan dijalankan ketika tombol ditekan
+                    Navigator.push(context, //jika tombol ditekan maka akan diarahkan ke absensiPage
                         MaterialPageRoute(builder: (context) {
                       return const AbsensiPage();
                     }));
@@ -62,7 +62,7 @@ class _DashboardPageState extends State<DashboardPage> {
         ),
         const SizedBox(height: 10.0),
         SearchInput(
-          controller: searchController,
+          controller: searchController, //pakai controller yang sudah didefinisikan
         ),
         const SizedBox(height: 40.0),
         MenuCard(

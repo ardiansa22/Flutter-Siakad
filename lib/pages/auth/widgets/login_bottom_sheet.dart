@@ -10,7 +10,7 @@ import '../../../common/components/buttons.dart';
 import '../../../common/components/custom_text_field.dart';
 import '../../../common/constants/colors.dart';
 
-class LoginBottomSheet extends StatefulWidget {
+class LoginBottomSheet extends StatefulWidget { //widget yang menampilkan bottom sheet untuk login.
   // final VoidCallback onPressed;
   const LoginBottomSheet({
     super.key,
@@ -18,18 +18,18 @@ class LoginBottomSheet extends StatefulWidget {
   });
 
   @override
-  State<LoginBottomSheet> createState() => _LoginBottomSheetState();
+  State<LoginBottomSheet> createState() => _LoginBottomSheetState(); 
 }
 
 class _LoginBottomSheetState extends State<LoginBottomSheet> {
-  final usernameController = TextEditingController();
+  final usernameController = TextEditingController(); //digunakan untuk mengendalikan input username dan password.
   final passwordController = TextEditingController();
 
   @override
-  void dispose() {
+  void dispose() { //fungsi dispose untuk membersihkan sumber daya yang tidak lagi digunakan utk hemat memori
     usernameController.dispose();
     passwordController.dispose();
-    super.dispose();
+    super.dispose(); //untuk memanggil metode dispose()
   }
 
   @override
@@ -58,7 +58,7 @@ class _LoginBottomSheetState extends State<LoginBottomSheet> {
               const SizedBox(width: 40.0),
             ],
           ),
-          const Divider(),
+          const Divider(), //widget yang digunakan untuk menampilkan garis pemisah secara horizontal
           Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [

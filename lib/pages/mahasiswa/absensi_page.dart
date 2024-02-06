@@ -15,7 +15,7 @@ class AbsensiPage extends StatefulWidget {
 }
 
 class _AbsensiPageState extends State<AbsensiPage> {
-  final List<TimeOfDay> times = [
+  final List<TimeOfDay> times = [ //daftar waktu riwayat absensi
     const TimeOfDay(hour: 8, minute: 0),
     const TimeOfDay(hour: 9, minute: 15),
     const TimeOfDay(hour: 10, minute: 30),
@@ -30,13 +30,13 @@ class _AbsensiPageState extends State<AbsensiPage> {
   @override
   Widget build(BuildContext context) {
     return CustomScaffold(
-      // useExtraPadding: true,
       body: ListView(
         padding: const EdgeInsets.symmetric(horizontal: 30.0),
         shrinkWrap: true,
-        physics: const NeverScrollableScrollPhysics(),
+        physics: const NeverScrollableScrollPhysics(),//memastikan bahwa widget yang menggunakan physics ini tidak akan bisa di scroll 
+
         children: [
-          Container(
+          Container( //informasi mahasiswa dan waktu saat ini
             decoration: BoxDecoration(
               borderRadius: const BorderRadius.all(Radius.circular(10.0)),
               color: ColorName.white,
@@ -57,11 +57,11 @@ class _AbsensiPageState extends State<AbsensiPage> {
                       horizontal: 28.0, vertical: 20.0),
                   child: Row(
                     children: [
-                      ClipRRect(
+                      ClipRRect( //widget dengan fungsi membatasi konten 
                         borderRadius:
                             const BorderRadius.all(Radius.circular(50.0)),
                         child: Image.network(
-                          'https://avatars.githubusercontent.com/u/46390894?v=4',
+                          'https://assets.ayobandung.com/crop/0x0:0x0/750x500/webp/photo/2021/12/15/1405406409.jpg',
                           width: 72.0,
                           height: 72.0,
                           fit: BoxFit.cover,
@@ -89,14 +89,14 @@ class _AbsensiPageState extends State<AbsensiPage> {
                             ),
                           ),
                           const Text(
-                            "Nama saya",
+                            "Kelompok 1",
                             style: TextStyle(
                               fontWeight: FontWeight.w700,
                               color: ColorName.primary,
                             ),
                           ),
                           const Text(
-                            "Senin, 28 Agustus 2023",
+                            "Rabu, 7 Februari 2024",
                             style: TextStyle(
                               fontSize: 8,
                               fontWeight: FontWeight.w500,
@@ -112,7 +112,7 @@ class _AbsensiPageState extends State<AbsensiPage> {
                   dashColor: const Color(0xffD5DFE7),
                 ),
                 const SizedBox(height: 12.0),
-                StreamBuilder(
+                StreamBuilder( //waktu saat ini
                   stream: Stream.periodic(const Duration(seconds: 1), (i) => i),
                   builder: (context, snapshot) {
                     final currentTime = DateTime.now();
@@ -124,7 +124,7 @@ class _AbsensiPageState extends State<AbsensiPage> {
                       style: const TextStyle(
                         fontSize: 32,
                         fontWeight: FontWeight.w700,
-                        color: Colors.blue, // Ganti dengan warna yang sesuai
+                        color: Colors.blue, 
                       ),
                     );
                   },
@@ -172,7 +172,7 @@ class _AbsensiPageState extends State<AbsensiPage> {
                     color: ColorName.white,
                   ),
                 ),
-                const SizedBox(height: 5),
+                const SizedBox(height: 5), //daftar waktu absensi
                 for (int i = 0; i < times.length; i++)
                   Padding(
                     padding: const EdgeInsets.symmetric(vertical: 5.0),

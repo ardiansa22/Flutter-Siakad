@@ -32,7 +32,7 @@ class _KhsPageState extends State<KhsPage> {
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               const Text(
-                "14 of 64 results",
+                "4 of 10 results",
                 style: TextStyle(
                   color: ColorName.grey,
                 ),
@@ -48,7 +48,7 @@ class _KhsPageState extends State<KhsPage> {
             contentPadding: const EdgeInsets.all(0),
             leading: ClipRRect(
               borderRadius: const BorderRadius.all(Radius.circular(50.0)),
-              child: Image.network(
+              child: Image.network( //ambil foto dari internet
                 'https://assets.ayobandung.com/crop/0x0:0x0/750x500/webp/photo/2021/12/15/1405406409.jpg',
                 width: 40,
                 height: 40,
@@ -56,7 +56,7 @@ class _KhsPageState extends State<KhsPage> {
               ),
             ),
             title: const Text(
-              "Jesica Jane",
+              "Flutter Kelompok 1",
               style: TextStyle(
                 fontSize: 16,
                 fontWeight: FontWeight.w700,
@@ -80,33 +80,33 @@ class _KhsPageState extends State<KhsPage> {
           ),
           const SizedBox(height: 14.0),
           const RowText(
-            label: 'Basis Data',
-            value: 'C',
-          ),
-          const SizedBox(height: 12.0),
-          const RowText(
-            label: 'Struktur Data',
+            label: 'Teori Sistem Basis Data',
             value: 'A',
           ),
           const SizedBox(height: 12.0),
           const RowText(
-            label: 'Algoritma',
+            label: 'Pemrograman Piranti Bergerak',
             value: 'A',
           ),
           const SizedBox(height: 12.0),
           const RowText(
-            label: 'Pemrograman Berbasis Obyek',
+            label: 'Rekayasa Perangkat Lunak',
+            value: 'A',
+          ),
+          const SizedBox(height: 12.0),
+          const RowText(
+            label: 'Seminar Program',
             value: 'A',
           ),
           const SizedBox(height: 12.0),
           const RowText(
             label: 'Keterangan',
-            value: 'A',
+            value: 'Lulus',
           ),
           const SizedBox(height: 40.0),
           const RowText(
             label: 'IPK Semester :',
-            value: '3.18',
+            value: '3.90',
             labelColor: ColorName.primary,
             valueColor: ColorName.primary,
           ),

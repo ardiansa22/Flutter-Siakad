@@ -29,7 +29,7 @@ class CourseGradeTile extends StatelessWidget {
             ),
           ),
           title: const Text(
-            "Jesica Jane",
+            "Flutter Kelompok 1",
             style: TextStyle(
               fontSize: 16,
               fontWeight: FontWeight.w700,

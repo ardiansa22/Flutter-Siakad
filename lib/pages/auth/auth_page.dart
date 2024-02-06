@@ -18,7 +18,7 @@ class AuthPage extends StatefulWidget {
 class _AuthPageState extends State<AuthPage> {
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
+    return Scaffold( //digunakan untuk mengembalikan widget Scaffold yang berisi tata letak halaman autentikasi (AuthPage). 
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,

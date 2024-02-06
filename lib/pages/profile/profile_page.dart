@@ -22,7 +22,7 @@ class ProfilePage extends StatefulWidget {
 
 class _ProfilePageState extends State<ProfilePage> {
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context) {  //fungsinya untuk bikin tampilan widgetnya
     return CustomScaffold(
       body: ListView(
         padding: const EdgeInsets.symmetric(horizontal: 16.0),
@@ -50,11 +50,11 @@ class _ProfilePageState extends State<ProfilePage> {
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    ClipRRect(
+                    ClipRRect( //widget dengan fungsi untuk membatasi konten
                       borderRadius:
                           const BorderRadius.all(Radius.circular(50.0)),
-                      child: Image.network(
-                        'https://avatars.githubusercontent.com/u/46390894?v=4',
+                      child: Image.network( //mengambil foto dari internet
+                       'https://assets.ayobandung.com/crop/0x0:0x0/750x500/webp/photo/2021/12/15/1405406409.jpg',
                         width: 72.0,
                         height: 72.0,
                         fit: BoxFit.cover,
@@ -82,14 +82,14 @@ class _ProfilePageState extends State<ProfilePage> {
                           ),
                         ),
                         const Text(
-                          "Nama Saya",
+                          "Kelompok 1",
                           style: TextStyle(
                             fontWeight: FontWeight.w700,
                             color: ColorName.primary,
                           ),
                         ),
                         const Text(
-                          "Senin, 28 Agustus 2023",
+                            "Rabu, 7 Februari 2024",
                           style: TextStyle(
                             fontSize: 8,
                             fontWeight: FontWeight.w500,
@@ -282,7 +282,7 @@ class _ProfilePageState extends State<ProfilePage> {
     );
   }
 
-  void _handleLogout() {
+  void _handleLogout() { //bagian logout
     AuthLocalDatasource().removeAuthData().then((success) {
       if (success) {
         // jika logout berhasil maka akan di kembalikan ke tampilan login

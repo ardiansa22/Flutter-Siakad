@@ -16,20 +16,20 @@ class SchedulesPage extends StatefulWidget {
 class _SchedulesPageState extends State<SchedulesPage> {
   @override
   Widget build(BuildContext context) {
-    return CustomScaffold(
+    return CustomScaffold( //custom dari scaffold sebagai kerangka
       body: ListView(
         padding: const EdgeInsets.all(24.0),
         shrinkWrap: true,
         physics: const NeverScrollableScrollPhysics(),
         children: [
           const Text(
-            "Jadwal MK",
+            "Jadwal Mata Kuliah",
             style: TextStyle(
               fontSize: 24,
               fontWeight: FontWeight.w700,
             ),
           ),
-          const Padding(
+          const Padding( //daftar matkul pakai gambar
             padding: EdgeInsets.symmetric(horizontal: 12.0, vertical: 20.0),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -39,7 +39,7 @@ class _SchedulesPageState extends State<SchedulesPage> {
                   imagePath: Images.basisData,
                 ),
                 CourseWithImage(
-                  name: 'Algoritma',
+                  name: 'Piranti Bergerak',
                   imagePath: Images.algoritma,
                 ),
                 CourseWithImage(
@@ -57,22 +57,22 @@ class _SchedulesPageState extends State<SchedulesPage> {
             ),
           ),
           const SizedBox(height: 18.0),
-          CourseScheduleTile(
+          CourseScheduleTile( //daftar mata kuliah
             data: CourseScheduleModel(
               dateStart: DateTime.now(),
               longTimeTeaching: 90,
-              course: 'Basis Data',
-              lecturer: 'Sulasti, M. Kom',
-              description: 'Luring',
+              course: 'Teori Sistem Basis Data',
+              lecturer: 'I Ketut Darmayuda',
+              description: 'R.110',
             ),
           ),
           CourseScheduleTile(
             data: CourseScheduleModel(
               dateStart: DateTime.now().add(const Duration(minutes: 90)),
               longTimeTeaching: 90,
-              course: 'Algotirma Lanjut',
-              lecturer: 'Rohman. Phd',
-              description: 'Luring',
+              course: 'Pemrograman Piranti Bergerak',
+              lecturer: 'M. Abdul Rojak, ST',
+              description: 'Lab. Multimedia',
             ),
           ),
           CourseScheduleTile(
@@ -80,17 +80,17 @@ class _SchedulesPageState extends State<SchedulesPage> {
               dateStart: DateTime.now().add(const Duration(minutes: 180)),
               longTimeTeaching: 90,
               course: 'Rekayasa Perangkat Lunak',
-              lecturer: 'Sihar S, M.T',
-              description: 'Daring',
+              lecturer: 'Wendi Wirsata., M.T',
+              description: 'R.105',
             ),
           ),
           CourseScheduleTile(
             data: CourseScheduleModel(
               dateStart: DateTime.now().add(const Duration(minutes: 270)),
               longTimeTeaching: 90,
-              course: 'Pemrograman Dasar',
-              lecturer: 'Fauzan S.Tr',
-              description: 'Daring',
+              course: 'Seminar Program',
+              lecturer: 'Rudy Sofian., M.Kom',
+              description: 'R.110',
             ),
           ),
         ],

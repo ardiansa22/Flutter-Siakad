@@ -14,7 +14,7 @@ class _SplashPageState extends State<SplashPage> {
   @override
   void initState() {
     super.initState();
-    Future.delayed(
+    Future.delayed( //digunakan untuk menunda navigasi ke halaman autentikasi (AuthPage)
       const Duration(seconds: 3),
       () => Navigator.pushReplacement(
         context,
