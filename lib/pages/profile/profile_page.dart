@@ -5,9 +5,12 @@ import '../../common/components/custom_scaffold.dart';
 import '../../common/components/row_text.dart';
 import '../../common/constants/colors.dart';
 import '../../common/constants/icons.dart';
+import '../../data/datasources/auth_local_datasource.dart';
+import '../../pages/auth/auth_page.dart';
 
 class ProfilePage extends StatefulWidget {
   final String role;
+
   const ProfilePage({
     Key? key,
     required this.role,
@@ -242,8 +245,62 @@ class _ProfilePageState extends State<ProfilePage> {
               ],
             ),
           ),
+           const SizedBox(height: 24.0),
+          Container(
+            padding:
+                const EdgeInsets.symmetric(horizontal: 16.0, vertical: 14.0),
+            decoration: BoxDecoration(
+              borderRadius: const BorderRadius.all(Radius.circular(10.0)),
+              color: ColorName.white,
+              boxShadow: [
+                BoxShadow(
+                  color: ColorName.black.withOpacity(0.25),
+                  offset: const Offset(0, 3),
+                  spreadRadius: 0,
+                  blurRadius: 4.0,
+                  blurStyle: BlurStyle.outer,
+                ),
+              ],
+            ),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                RowText(
+                  icon: const Icon(Icons.door_back_door),
+                  label: 'Logout',
+                  value: '',
+                  valueColor: ColorName.primary,
+                  onTap: () {
+                    _handleLogout();
+                  },
+                ),
+              ],
+            ),
+          ),
         ],
       ),
     );
+  }
+
+  void _handleLogout() {
+    AuthLocalDatasource().removeAuthData().then((success) {
+      if (success) {
+        // jika logout berhasil maka akan di kembalikan ke tampilan login
+        Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) {
+          return AuthPage();
+        }));
+      } else {
+        // jika terjadi error maka akan memunculkan alert
+        showDialog(
+          context: context,
+          builder: (context) {
+            return AlertDialog(
+              title: Text('Error'),
+              content: Text('Failed to logout. Please try again.'),
+            );
+          },
+        );
+      }
+    });
   }
 }
