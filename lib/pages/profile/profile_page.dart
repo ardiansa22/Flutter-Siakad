@@ -82,14 +82,14 @@ class _ProfilePageState extends State<ProfilePage> {
                           ),
                         ),
                         const Text(
-                          "Nama Saya",
+                          "Kelompok 1 Ferian,RizkyN,Fakhrijal,Aldiansyah,RiskyFadilah",
                           style: TextStyle(
                             fontWeight: FontWeight.w700,
                             color: ColorName.primary,
                           ),
                         ),
                         const Text(
-                          "Senin, 28 Agustus 2023",
+                          "Senin, 7 Februari 2023",
                           style: TextStyle(
                             fontSize: 8,
                             fontWeight: FontWeight.w500,
@@ -245,7 +245,7 @@ class _ProfilePageState extends State<ProfilePage> {
               ],
             ),
           ),
-           const SizedBox(height: 24.0),
+          const SizedBox(height: 24.0),
           Container(
             padding:
                 const EdgeInsets.symmetric(horizontal: 16.0, vertical: 14.0),
@@ -286,7 +286,8 @@ class _ProfilePageState extends State<ProfilePage> {
     AuthLocalDatasource().removeAuthData().then((success) {
       if (success) {
         // jika logout berhasil maka akan di kembalikan ke tampilan login
-        Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) {
+        Navigator.pushReplacement(context,
+            MaterialPageRoute(builder: (context) {
           return AuthPage();
         }));
       } else {
